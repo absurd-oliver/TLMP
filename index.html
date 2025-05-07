@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="code.js" defer></script>
+</head>
+<body>
+	
+<input type="text" id="showInput" placeholder="Show or Movie name">
+<br>
+<label>
+  <input type="checkbox" id="modeToggle">
+  Movie Mode
+</label>
+<br>
+<div id="tvControls">
+  <input type="text" id="seasonInput" placeholder="Season">
+  <input type="text" id="episodeInput" placeholder="Episode">
+</div>
+<button onclick="start()">Find</button>
+
+<iframe id="showDisplay" style="width: 100%; height: 500px;" frameborder="0" referrerpolicy="origin" allowfullscreen></iframe>
+
+<label>
+  <input type="checkbox" id="themeToggle">
+  Light Theme
+</label>
+</body>
+</html>
