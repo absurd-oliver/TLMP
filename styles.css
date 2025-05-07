@@ -1,0 +1,91 @@
+:root {
+  --bg-color: #1e1e2f;
+  --text-color: #f0f0f0;
+  --input-bg: #2c2c3e;
+  --input-text: #ffffff;
+  --placeholder-color: #aaaaaa;
+  --button-bg: #4e8cff;
+  --button-hover: #3a6edc;
+  --iframe-shadow: rgba(0, 0, 0, 0.4);
+}
+
+body.light {
+  --bg-color: #f0f0f0;
+  --text-color: #1e1e2f;
+  --input-bg: #ffffff;
+  --input-text: #000000;
+  --placeholder-color: #666666;
+  --button-bg: #4e8cff;
+  --button-hover: #3a6edc;
+  --iframe-shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 20px;
+  gap: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+input[type="text"] {
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  width: 250px;
+  max-width: 80vw;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  outline: none;
+}
+
+input[type="text"]::placeholder {
+  color: var(--placeholder-color);
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--button-bg);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--button-hover);
+}
+
+label {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+iframe {
+  width: 90vw;
+  max-width: 1000px;
+  height: 500px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 20px;
+  box-shadow: 0 0 20px var(--iframe-shadow);
+}
+
+#tvControls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
