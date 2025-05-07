@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root {
+  --bg-color: #1e1e2f;
+  --text-color: #f0f0f0;
+  --input-bg: #2c2c3e;
+  --input-text: #ffffff;
+  --placeholder-color: #aaaaaa;
+  --button-bg: #4e8cff;
+  --button-hover: #3a6edc;
+  --iframe-shadow: rgba(0, 0, 0, 0.4);
+}
+
+body.light {
+  --bg-color: #f0f0f0;
+  --text-color: #1e1e2f;
+  --input-bg: #ffffff;
+  --input-text: #000000;
+  --placeholder-color: #666666;
+  --button-bg: #4e8cff;
+  --button-hover: #3a6edc;
+  --iframe-shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 20px;
+  gap: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+input[type="text"] {
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  width: 250px;
+  max-width: 80vw;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  outline: none;
+}
+
+input[type="text"]::placeholder {
+  color: var(--placeholder-color);
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--button-bg);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--button-hover);
+}
+
+label {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+iframe {
+  width: 90vw;
+  max-width: 1000px;
+  height: 500px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 20px;
+  box-shadow: 0 0 20px var(--iframe-shadow);
+}
+
+#tvControls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+</style>
+</head>
+<body>
+	
+<input type="text" id="showInput" placeholder="Show or Movie name">
+<br>
+<label>
+  <input type="checkbox" id="modeToggle">
+  Movie Mode
+</label>
+<br>
+<div id="tvControls">
+  <input type="text" id="seasonInput" placeholder="Season">
+  <input type="text" id="episodeInput" placeholder="Episode">
+</div>
+<button onclick="start()">Find</button>
+
+<iframe id="showDisplay" style="width: 100%; height: 500px;" frameborder="0" referrerpolicy="origin" allowfullscreen></iframe>
+
+<label>
+  <input type="checkbox" id="themeToggle">
+  Light Theme
+</label>
+  <script>
+async function fetchImdbID(title, isMovie) {
+  const apiKey = 'd0004590';
+  const type = isMovie ? 'movie' : 'series';
+  const url = `https://www.omdbapi.com/?t=${encodeURIComponent(title)}&type=${type}&apikey=${apiKey}`;
+  const response = await fetch(url);
+  const data = await response.json();
+
+  if (data && data.imdbID) {
+    return data.imdbID;
+  } else {
+    alert("Title not found!");
+    throw new Error("IMDb ID not found.");
+  }
+}
+
+async function start() {
+  const title = document.getElementById('showInput').value;
+  const isMovie = document.getElementById('modeToggle').checked;
+  const timestamp = new Date().getTime();
+
+  try {
+    const imdbID = await fetchImdbID(title, isMovie);
+    const iframe = document.getElementById('showDisplay');
+
+    if (isMovie) {
+      iframe.src = `https://vidsrc.net/embed/movie?imdb=${imdbID}&t=${timestamp}`;
+    } else {
+      const season = document.getElementById('seasonInput').value;
+      const episode = document.getElementById('episodeInput').value;
+      iframe.src = `https://vidsrc.net/embed/tv?imdb=${imdbID}&season=${season}&episode=${episode}&t=${timestamp}`;
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// Optional: hide season/episode inputs when in Movie mode
+document.getElementById('modeToggle').addEventListener('change', function () {
+  const tvControls = document.getElementById('tvControls');
+  tvControls.style.display = this.checked ? 'none' : 'block';
+});
+
+const themeToggle = document.getElementById('themeToggle');
+
+// Apply saved theme on page load
+window.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light');
+    themeToggle.checked = true;
+  }
+});
+
+// Toggle and store theme
+themeToggle.addEventListener('change', () => {
+  if (themeToggle.checked) {
+    document.body.classList.add('light');
+    localStorage.setItem('theme', 'light');
+  } else {
+    document.body.classList.remove('light');
+    localStorage.setItem('theme', 'dark');
+  }
+});
+</script>
+</body>
+</html>
