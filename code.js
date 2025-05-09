@@ -67,7 +67,7 @@ let currentQuery = '';
 let isLoading = false;
 
 
-const YOUTUBE_API_KEY = 'AIzaSyDvi1f67ft474tXVB871DLkNyCad1pFU6M';
+const YOUTUBE_API_KEY = document.getElementById('userApiInput');
 
 const loadingIndicator = document.getElementById('youtubeLoading');
 
