@@ -69,6 +69,27 @@ let isLoading = false;
 
 const YOUTUBE_API_KEY = document.getElementById('userApiInput');
 
+const apiKeyInput = document.getElementById('userApiInput');
+
+// Load saved API key from localStorage on page load
+window.addEventListener('DOMContentLoaded', () => {
+  const savedKey = localStorage.getItem('youtubeApiKey');
+  if (savedKey) {
+    apiKeyInput.value = savedKey;
+  }
+
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light');
+    themeToggle.checked = true;
+  }
+});
+
+// Save API key to localStorage when user types
+apiKeyInput.addEventListener('input', () => {
+  localStorage.setItem('youtubeApiKey', apiKeyInput.value.trim());
+});
+
 const loadingIndicator = document.getElementById('youtubeLoading');
 
 async function searchYouTube(initial = true) {
