@@ -21,7 +21,7 @@ body.light {
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   display: flex;
@@ -101,4 +101,15 @@ iframe {
   padding: 10px;
   border-radius: 8px;
   background: var(--bg-secondary, #4e4e4e);
+}
+
+#youtubeResults.light {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-top: 20px;
+  width: 90%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--bg-secondary, #c7c7c7);
 }
