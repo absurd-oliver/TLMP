@@ -61,3 +61,95 @@ themeToggle.addEventListener('change', () => {
     localStorage.setItem('theme', 'dark');
   }
 });
+
+let nextPageToken = null;
+let currentQuery = '';
+let isLoading = false;
+
+
+const YOUTUBE_API_KEY = 'AIzaSyDvi1f67ft474tXVB871DLkNyCad1pFU6M';
+
+const loadingIndicator = document.getElementById('youtubeLoading');
+
+async function searchYouTube(initial = true) {
+  const resultsContainer = document.getElementById('youtubeResults');
+
+  if (initial) {
+    currentQuery = document.getElementById('youtubeSearch').value.trim();
+    resultsContainer.innerHTML = ''; // Clear old results
+    nextPageToken = null;
+  }
+
+  if (!currentQuery || isLoading) return;
+
+  isLoading = true;
+  loadingIndicator.style.display = 'block';
+
+  const apiURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=6&q=${encodeURIComponent(currentQuery)}&key=${YOUTUBE_API_KEY}${nextPageToken ? `&pageToken=${nextPageToken}` : ''}`;
+
+  try {
+    const res = await fetch(apiURL);
+    const data = await res.json();
+
+    nextPageToken = data.nextPageToken || null;
+    isLoading = false;
+    loadingIndicator.style.display = 'none';
+
+    if (!data.items || data.items.length === 0) {
+      if (initial) resultsContainer.innerHTML = '<p>No results found.</p>';
+      return;
+    }
+
+    data.items.forEach(item => {
+      const videoId = item.id.videoId;
+      const title = item.snippet.title;
+      const thumbnail = item.snippet.thumbnails.medium.url;
+      const channel = item.snippet.channelTitle;
+
+      const resultDiv = document.createElement('div');
+      resultDiv.className = 'youtube-result';
+      resultDiv.style = 'cursor: pointer; display: flex; align-items: center; gap: 15px; margin-bottom: 15px;';
+
+      resultDiv.innerHTML = `
+        <img src="${thumbnail}" alt="Thumbnail" width="160" height="90" style="border-radius: 8px;">
+        <div>
+          <strong>${title}</strong><br>
+          <small>${channel}</small>
+        </div>
+      `;
+
+      resultDiv.onclick = () => {
+        document.getElementById('youtubePlayer').src = `https://www.youtube.com/embed/${videoId}`;
+        document.getElementById('youtubeTitle').innerText = title;
+        window.scrollTo({ top: document.getElementById('youtubePlayer').offsetTop, behavior: 'smooth' });
+      };
+
+      resultsContainer.appendChild(resultDiv);
+    });
+  } catch (err) {
+    console.error(err);
+    isLoading = false;
+    loadingIndicator.style.display = 'none';
+    if (initial) resultsContainer.innerHTML = '<p>Error loading search results.</p>';
+  }
+}
+
+
+document.getElementById('youtubeResults').addEventListener('scroll', function () {
+  const container = this;
+  if (container.scrollTop + container.clientHeight >= container.scrollHeight - 50) {
+    // Near bottom
+    searchYouTube(false);
+  }
+});
+
+let scrollTimeout;
+document.getElementById('youtubeResults').addEventListener('scroll', function () {
+  if (scrollTimeout) clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    const container = this;
+    if (container.scrollTop + container.clientHeight >= container.scrollHeight - 50) {
+      searchYouTube(false);
+    }
+  }, 150);
+});

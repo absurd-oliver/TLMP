@@ -89,3 +89,14 @@ iframe {
   flex-wrap: nowrap;
   justify-content: center;
 }
+
+#youtubeResults {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-top: 20px;
+  width: 90%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--bg-secondary, #f9f9f9);
+}

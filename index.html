@@ -27,5 +27,15 @@
   <input type="checkbox" id="themeToggle">
   Light Theme
 </label>
+<hr style="width: 90%; margin-top: 30px;">
+
+<input type="text" id="youtubeSearch" placeholder="Search YouTube">
+<button onclick="searchYouTube(true)">Search Youtube</button>
+<div id="youtubeResults" style="max-height: 400px; overflow-y: auto; margin-top: 20px; width: 90%; border: 1px solid #ccc; padding: 10px; border-radius: 8px; background-color: black;"></div>
+<div id="youtubeLoading" style="display: none; margin-top: 10px; font-size: 16px;">Loading more results...</div>
+
+<h2 id="youtubeTitle" style="font-size: 20px; margin-top: 10px;"></h2>
+<iframe id="youtubePlayer" style="width: 90vw; max-width: 1000px; height: 500px; margin-top: 20px;" frameborder="0" allowfullscreen></iframe>
+
 </body>
 </html>
