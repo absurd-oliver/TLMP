@@ -41,7 +41,8 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   padding: 10px 15px;
   font-size: 18px;
   border-radius: 5px;
@@ -53,7 +54,8 @@ input[type="text"] {
   outline: none;
 }
 
-input[type="text"]::placeholder {
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
   color: var(--placeholder-color);
 }
 
@@ -132,7 +134,7 @@ iframe {
 </label>
 <hr style="width: 90%; margin-top: 30px;">
 
-<input type="text" id="userApiInput" placeholder="Enter Your Google API Key Here (YouTube Data API v3)" style="width: 90%;">
+<input type="password" id="userApiInput" placeholder="Enter Your Google API Key Here (YouTube Data API v3)" style="width: 90%;">
 <input type="text" id="youtubeSearch" placeholder="Search YouTube">
 <button onclick="searchYouTube(true)">Search Youtube</button>
 <div id="youtubeResults" style="max-height: 400px; overflow-y: auto; margin-top: 20px; width: 90%; border: 1px solid #ccc; padding: 10px; border-radius: 8px;"></div>
@@ -212,6 +214,27 @@ let isLoading = false;
 
 
 const YOUTUBE_API_KEY = document.getElementById('userApiInput');
+
+const apiKeyInput = document.getElementById('userApiInput');
+
+// Load saved API key from localStorage on page load
+window.addEventListener('DOMContentLoaded', () => {
+  const savedKey = localStorage.getItem('youtubeApiKey');
+  if (savedKey) {
+    apiKeyInput.value = savedKey;
+  }
+
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light');
+    themeToggle.checked = true;
+  }
+});
+
+// Save API key to localStorage when user types
+apiKeyInput.addEventListener('input', () => {
+  localStorage.setItem('youtubeApiKey', apiKeyInput.value.trim());
+});
 
 const loadingIndicator = document.getElementById('youtubeLoading');
 
