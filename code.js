@@ -73,6 +73,12 @@ const loadingIndicator = document.getElementById('youtubeLoading');
 
 async function searchYouTube(initial = true) {
   const resultsContainer = document.getElementById('youtubeResults');
+  const apiKey = document.getElementById('userApiInput').value.trim();
+
+  if (!apiKey) {
+    alert("Please enter your YouTube Data API key.");
+    return;
+  }
 
   if (initial) {
     currentQuery = document.getElementById('youtubeSearch').value.trim();
@@ -85,7 +91,7 @@ async function searchYouTube(initial = true) {
   isLoading = true;
   loadingIndicator.style.display = 'block';
 
-  const apiURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=6&q=${encodeURIComponent(currentQuery)}&key=${YOUTUBE_API_KEY}${nextPageToken ? `&pageToken=${nextPageToken}` : ''}`;
+  const apiURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=6&q=${encodeURIComponent(currentQuery)}&key=${apiKey}${nextPageToken ? `&pageToken=${nextPageToken}` : ''}`;
 
   try {
     const res = await fetch(apiURL);
