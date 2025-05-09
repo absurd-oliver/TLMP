@@ -35,7 +35,8 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   padding: 10px 15px;
   font-size: 18px;
   border-radius: 5px;
@@ -47,7 +48,8 @@ input[type="text"] {
   outline: none;
 }
 
-input[type="text"]::placeholder {
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
   color: var(--placeholder-color);
 }
 
