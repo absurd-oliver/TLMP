@@ -113,3 +113,16 @@ iframe {
   border-radius: 8px;
   background: var(--bg-secondary, #c7c7c7);
 }
+
+#youtubeSectionText {
+  transform: scale(7, 3);
+  transition: 250ms filter linear;
+  filter: blur(2px);
+}
+
+#youtubeSectionText:hover {
+  transition: 250ms filter linear;
+  filter: blur(0px);
+}
+
+/* z-index: -1; */
