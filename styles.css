@@ -76,7 +76,7 @@ label {
 }
 
 iframe {
-  width: 90vw;
+  width: 100vw;
   max-width: 1000px;
   height: 500px;
   border-radius: 10px;

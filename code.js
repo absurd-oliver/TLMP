@@ -201,3 +201,20 @@ document
       }
     }, 150);
   });
+
+
+document.getElementById("showInput").addEventListener('keypress', function(event){
+    if (event.key === 'Enter'){
+        start();
+    }
+});
+document.getElementById("seasonInput").addEventListener('keypress', function(event){
+    if (event.key === 'Enter'){
+        start();
+    }
+});
+document.getElementById("episodeInput").addEventListener('keypress', function(event){
+    if (event.key === 'Enter'){
+        start();
+    }
+});
