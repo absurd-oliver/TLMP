@@ -35,6 +35,10 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.hidden {
+  display: none;
+}
+
 input[type="text"],
 input[type="password"] {
   padding: 10px 15px;
