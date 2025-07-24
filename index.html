@@ -7,19 +7,14 @@
     <script src="code.js" defer></script>
   </head>
   <body>
-    <input type="text" id="showInput" placeholder="Show or Movie name" />
-    <br />
-    <label>
-      <input type="checkbox" id="modeToggle" />
-      Movie Mode
-    </label>
-    <br />
+    <input type="text" id="showInput" placeholder="Show or Movie name" /><label>
+    <input type="checkbox" id="modeToggle" />Movie Mode</label>
     <div id="tvControls">
       <input type="text" id="seasonInput" placeholder="Season" />
       <input type="text" id="episodeInput" placeholder="Episode" />
     </div>
+    <label><input type="checkbox" id="themeToggle" />Light Theme</label>
     <button onclick="start()">Find</button>
-
     <iframe
       id="showDisplay"
       style="width: 100%; height: 500px"
@@ -27,50 +22,5 @@
       referrerpolicy="origin"
       allowfullscreen
     ></iframe>
-
-    <label>
-      <input type="checkbox" id="themeToggle" />
-      Light Theme
-    </label>
-    <hr style="width: 90%; margin-top: 30px" />
-    <br />
-    <br />
-    <div class='hidden'>
-    <h1 id="youtubeSectionText" onclick="youtubeTextMouseClick()">Youtube</h1>
-    <input
-      type="password"
-      id="userApiInput"
-      placeholder="Enter Your Google API Key Here (YouTube Data API v3)"
-      style="width: 90%"
-    />
-    <input type="text" id="youtubeSearch" placeholder="Search YouTube" />
-    <button onclick="searchYouTube(true)">Search Youtube</button>
-    <div
-      id="youtubeResults"
-      style="
-        max-height: 400px;
-        overflow-y: auto;
-        margin-top: 20px;
-        width: 90%;
-        border: 1px solid #ccc;
-        padding: 10px;
-        border-radius: 8px;
-      "
-    ></div>
-    <div
-      id="youtubeLoading"
-      style="display: none; margin-top: 10px; font-size: 16px"
-    >
-      Loading more results...
-    </div>
-
-    <h2 id="youtubeTitle" style="font-size: 20px; margin-top: 10px"></h2>
-    <iframe
-      id="youtubePlayer"
-      style="width: 90vw; max-width: 1000px; height: 500px; margin-top: 20px"
-      frameborder="0"
-      allowfullscreen
-    ></iframe>
-    </div>
   </body>
 </html>
