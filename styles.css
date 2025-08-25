@@ -40,7 +40,8 @@ body {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="number"] {
   padding: 10px 15px;
   font-size: 18px;
   border-radius: 5px;
@@ -53,7 +54,8 @@ input[type="password"] {
 }
 
 input[type="text"]::placeholder,
-input[type="password"]::placeholder {
+input[type="password"]::placeholder,
+input[type="number"]::placeholder {
   color: var(--placeholder-color);
 }
 
