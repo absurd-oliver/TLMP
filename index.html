@@ -6,15 +6,20 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="code.js" defer></script>
   </head>
-  <body>
-    <input type="text" id="showInput" placeholder="Show or Movie name" /><label>
-    <input type="checkbox" id="modeToggle" />Movie Mode</label>
+  <body class="segoeUIfont">
+    <input type="text" id="showInput" placeholder="Show or Movie name" class="segoeUIfont"/>
+    <label><input type="checkbox" id="modeToggle"/>Movie Mode</label>
     <div id="tvControls">
-      <input type="number" id="seasonInput" placeholder="Season" />
-      <input type="number" id="episodeInput" placeholder="Episode" />
+      <input type="number" id="seasonInput" min="1" placeholder="Season" class="segoeUIfont"/>
+      <input type="number" id="episodeInput"  min="1" placeholder="Episode" class="segoeUIfont"/>
     </div>
     <label><input type="checkbox" id="themeToggle" />Light Theme</label>
-    <button onclick="start()">Find</button>
+    <select id="fontSelect" class="segoeUIfont">
+      <option id="fontOption1" value="0">Segoe UI</option>
+      <option id="fontOption2" value="1">Cursive</option>
+      <option id="fontOption3" value="2">comic sans</option>
+    </select>
+    <button id="findButton" onclick="start()" class="segoeUIfont">Find</button>
     <iframe
       id="showDisplay"
       style="width: 100%; height: 500px"

@@ -98,3 +98,37 @@ document.getElementById("episodeInput").addEventListener('keypress', function(ev
         start();
     }
 });
+
+const fontClasses = ["segoeUIfont", "cursivefont", "comicsansfont"];
+
+function applyFont(fontClass) {
+  const elements = [
+    document.body,
+    document.getElementById("showInput"),
+    document.getElementById("seasonInput"),
+    document.getElementById("episodeInput"),
+    document.getElementById("fontSelect"),
+    document.getElementById("findButton")
+  ];
+
+  elements.forEach(el => {
+    el.classList.remove(...fontClasses); // remove all font classes
+    el.classList.add(fontClass);         // add the new one
+  });
+}
+
+document.getElementById("fontSelect").addEventListener("change", function () {
+  const select = this; // "this" is the <select>
+
+  if (select.value === "0") {
+    applyFont("segoeUIfont");
+  } else if (select.value === "1") {
+    applyFont("cursivefont");
+  } else if (select.value === "2") {
+    applyFont("comicsansfont");
+  } else {
+    console.error("Unknown font option:", select.value);
+  }
+});
+
+
