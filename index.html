@@ -2,9 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title>Totally Legit Movie Player</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
     <script src="code.js" defer></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+        emailjs.init({
+          publicKey: "auLK2yMPvnrWvZIzI",
+        });
+      })();
+    </script>
+    <script src="feedback.js" defer></script>
   </head>
   <body class="segoeUIfont">
     <input type="text" id="showInput" placeholder="Show or Movie name" class="segoeUIfont"/>
@@ -27,5 +39,28 @@
       referrerpolicy="no-referrer"
       allowfullscreen
     ></iframe>
+    <br>
+    <button id="optionsButton" onclick="quickFind()">Quick Find</button>
+    <div class="hidden" id="quickFindOptionsDiv">
+      <h2 id="divchildshowtextparent">shows (click) →</h2>
+      <div id="divchildshows" class="hidden">
+      <img id="familyguyposter" src="showImages/familyguyposter.jpg" onclick="quickFindMediaShows('family guy')">
+      <img id="uploadposter" src="showImages/uploadposter.webp" onclick="quickFindMediaShows('upload')">
+      <img id="therookieposter" src="showImages/therookieposter.jpg" onclick="quickFindMediaShows('the rookie')">
+      <img id="carmensandiegoposter" src="showImages/carmensandiegoposter.jpg" onclick="quickFindMediaShows('carmen sandiego')">
+      </div>
+      <h2 id="divchildmovietextparent">movies (click) →</h2>
+      <div id="divchildmovies" class="hidden">
+        <img id="kpopdemonhuntersposterposter" src="movieimages/kpopdemonhuntersposter.webp" onclick="quickFindMediaMovies('kpop demon hunters')">
+        <img id="starwarsepisodeivanewhopeposter" src="movieimages/starwarsepisodeivanewhope.jpg" onclick="quickFindMediaMovies('Star Wars: Episode IV - A New Hope')">
+        <img id="kingsmanthesecretserviceposter" src="movieimages/kingsmanthesecretserviceposter.jpg" onclick="quickFindMediaMovies('kingsman: the secret service')">
+        <img id="bladerunner2049poster" src="movieimages/bladerunner2049poster.jpg" onclick="quickFindMediaMovies('Blade Runner 2049')">
+      </div>
+    </div>
+    <br>
+    <br>
+    <textarea id="feedback" placeholder='Type your feedback, quick add suggestions and more here (emails are checked frequently)'></textarea>
+    <button id="addToQuickFindButton" onclick="addToQuickFind()">send feedback</button>
+
   </body>
 </html>

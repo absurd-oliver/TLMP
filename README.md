@@ -1,9 +1,8 @@
-# Watch Movies and Shows
-### 100% legal *wink* *wink*
+# Totally Legit Movie Player
+### Free with ads (use adblocker)
+<sub>https://absurd-oliver.github.io/Display_Show-Movie/</sub>
 
-also me messing around with video display
-
-<sub>https://absurd-oliver.github.io/Display_Show-Movie/</aub>
+Recommended browser extensions: AdBlock / uBlock Origin lite + Popup BLocker (strict)
 
 ## License
 

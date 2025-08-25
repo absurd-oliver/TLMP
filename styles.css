@@ -140,5 +140,23 @@ iframe {
   font-style: normal;
 }
 
+img {
+  padding: 1.5625vw;
+  height: 35vh;
+}
+
+h2 {
+  background-color: var(--input-bg);
+}
+
+#addToQuickFindButton {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+textarea {
+  width: 50vw;
+  max-width: 960px;
+}
 
 /* z-index: -1; */

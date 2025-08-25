@@ -131,4 +131,78 @@ document.getElementById("fontSelect").addEventListener("change", function () {
   }
 });
 
+var quickFindToggleVariable = 0;
+var quickFindDivChildShowTextParentToggleVariable = 0;
+var quickFindDivChildMovieTextParentToggleVariable = 0;
+
+function quickFind() {
+  if (quickFindToggleVariable === 0){
+    document.getElementById("quickFindOptionsDiv").classList.remove("hidden");
+    quickFindToggleVariable = 1;
+  } else if (quickFindToggleVariable === 1){
+    document.getElementById("quickFindOptionsDiv").classList.add("hidden");
+    quickFindToggleVariable = 0;
+  }
+  
+}
+
+document.getElementById("divchildshowtextparent").addEventListener("click", function() {
+  if (quickFindDivChildShowTextParentToggleVariable === 0){
+    document.getElementById("divchildshows").classList.remove("hidden");
+    document.getElementById("divchildshowtextparent").innerHTML = "shows (click) ↓";
+    quickFindDivChildShowTextParentToggleVariable = 1;
+  } else if (quickFindDivChildShowTextParentToggleVariable === 1){
+    document.getElementById("divchildshows").classList.add("hidden");
+    document.getElementById("divchildshowtextparent").innerHTML = "shows (click) →";
+    quickFindDivChildShowTextParentToggleVariable = 0;
+  }
+});
+
+document.getElementById("divchildmovietextparent").addEventListener("click", function() {
+  if (quickFindDivChildMovieTextParentToggleVariable === 0){
+    document.getElementById("divchildmovies").classList.remove("hidden");
+    document.getElementById("divchildmovietextparent").innerHTML = "movies (click) ↓";
+    quickFindDivChildMovieTextParentToggleVariable = 1;
+  } else if (quickFindDivChildMovieTextParentToggleVariable === 1){
+    document.getElementById("divchildmovies").classList.add("hidden");
+    document.getElementById("divchildmovietextparent").innerHTML = "movies (click) →";
+    quickFindDivChildMovieTextParentToggleVariable = 0;
+  }
+});
+
+async function quickFindMediaShows(poster){
+  const quickshowtimestamp = new Date().getTime();
+  try {
+    const imdbID = await fetchImdbID(poster, false);
+    const iframe = document.getElementById("showDisplay");
+    const quickseason = 1;
+    const quickepisode = 1;
+    iframe.src = `https://vidsrc.net/embed/tv?imdb=${imdbID}&season=${quickseason}&episode=${quickepisode}&t=${quickshowtimestamp}`;
+  } catch (err) {
+    console.error(err);
+  }
+  document.getElementById("showInput").value = poster;
+  document.getElementById("seasonInput").value = 1;
+  document.getElementById("episodeInput").value = 1;
+  document.getElementById("modeToggle").checked = false;
+  const tvControls = document.getElementById("tvControls");
+  tvControls.style.display = document.getElementById("modeToggle").checked ? "none" : "block";
+}
+
+
+async function quickFindMediaMovies(poster){
+  const quickmovietimestamp = new Date().getTime();
+  try {
+    const imdbID = await fetchImdbID(poster, true);
+    const iframe = document.getElementById("showDisplay");
+    iframe.src = `https://vidsrc.net/embed/movie?imdb=${imdbID}&t=${quickmovietimestamp}`;
+  } catch (err) {
+    console.error(err);
+  }
+  document.getElementById("showInput").value = poster;
+  document.getElementById("modeToggle").checked = true;
+  const tvControls = document.getElementById("tvControls");
+  tvControls.style.display = document.getElementById("modeToggle").checked ? "none" : "block";
+}
+
 
