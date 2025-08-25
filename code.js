@@ -132,8 +132,8 @@ document.getElementById("fontSelect").addEventListener("change", function () {
 });
 
 var quickFindToggleVariable = 0;
-var quickFindDivChildShowTextParentToggleVariable = 0;
-var quickFindDivChildMovieTextParentToggleVariable = 0;
+var quickFindDivChildShowTextParentToggleVariable = 1;
+var quickFindDivChildMovieTextParentToggleVariable = 1;
 
 function quickFind() {
   if (quickFindToggleVariable === 0){
