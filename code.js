@@ -131,7 +131,7 @@ document.getElementById("fontSelect").addEventListener("change", function () {
   }
 });
 
-var quickFindToggleVariable = 0;
+var quickFindToggleVariable = 1;
 var quickFindDivChildShowTextParentToggleVariable = 1;
 var quickFindDivChildMovieTextParentToggleVariable = 1;
 
@@ -204,5 +204,6 @@ async function quickFindMediaMovies(poster){
   const tvControls = document.getElementById("tvControls");
   tvControls.style.display = document.getElementById("modeToggle").checked ? "none" : "block";
 }
+
 
 
