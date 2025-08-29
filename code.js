@@ -206,3 +206,6 @@ async function quickFindMediaMovies(poster){
 }
 
 
+function adblockCheck() {
+  document.getElementById("adsWarning").classList.add("hidden");
+}

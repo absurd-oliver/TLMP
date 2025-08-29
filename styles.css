@@ -91,7 +91,7 @@ select {
 }
 
 #fontOption3 {
-  font-family: "Comic Sans MS", sans-serif;
+  font-family: "comicSansFont", sans-serif;
 }
 
 button {
@@ -140,6 +140,13 @@ iframe {
   font-style: normal;
 }
 
+@font-face {
+  font-family: "comicSansFont";
+  src: url("fonts/static/Comic\ Sans\ MS.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
 img {
   padding: 1.5625vw;
   height: 35vh;
@@ -157,6 +164,10 @@ h2 {
 textarea {
   width: 50vw;
   max-width: 960px;
+}
+
+a {
+  color: aqua;
 }
 
 /* z-index: -1; */

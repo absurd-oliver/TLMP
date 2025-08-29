@@ -19,6 +19,18 @@
     <script src="feedback.js" defer></script>
   </head>
   <body class="segoeUIfont">
+    <div id="adsWarning">
+      <br>
+      <p>
+        ⚠️ For your safety, please enable an 
+        <a href="https://chromewebstore.google.com/detail/ddkjiahejlhfcafbddmgiahcphecmpfh?utm_source=item-share-cb">ad blocker</a> 
+        and 
+        <a href="https://chromewebstore.google.com/detail/aefkmifgmaafnojlojpnekbpbmjiiogg?utm_source=item-share-cb">popup blocker</a> 
+        before watching.
+      </p>
+      <button onclick="adblockCheck()">acknowledge</button>
+      <br>
+    </div>
     <input type="text" id="showInput" placeholder="Show or Movie name" class="segoeUIfont"/>
     <label><input type="checkbox" id="modeToggle"/>Movie Mode</label>
     <div id="tvControls">
@@ -50,6 +62,7 @@
       <img id="carmensandiegoposter" src="showImages/carmensandiegoposter.jpg" onclick="quickFindMediaShows('carmen sandiego')">
       <img id="demonslayerposter" src="showImages/demonslayerposter.jpg" onclick="quickFindMediaShows('demon slayer')">
       <img id="doctorwhoposter" src="showImages/doctorwhoposter.jpg" onclick="quickFindMediaShows('doctor who')">
+      <img id="kcUndercoveposter" src="showImages/kcUndercoverposter.jpg" onclick="quickFindMediaShows('kc undercover')">
       </div>
       <h2 id="divchildmovietextparent">movies (click) ↓</h2>
       <div id="divchildmovies">
