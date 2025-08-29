@@ -1,0 +1,9 @@
+lastTitle
+lastIsMovie
+lastTimestamp
+lastSeason
+lastEpisode
+theme
+quickFindShown
+showsShown
+moviesShown

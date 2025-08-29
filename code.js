@@ -19,6 +19,8 @@ async function start() {
   const title = document.getElementById("showInput").value;
   const isMovie = document.getElementById("modeToggle").checked;
   const timestamp = new Date().getTime();
+  localStorage.setItem("lastTitle", `${title}`);
+  localStorage.setItem("lastIsMovie", `${isMovie}`);
 
   try {
     const imdbID = await fetchImdbID(title, isMovie);
@@ -29,6 +31,8 @@ async function start() {
     } else {
       const season = document.getElementById("seasonInput").value;
       const episode = document.getElementById("episodeInput").value;
+      localStorage.setItem("lastSeason", `${season}`);
+      localStorage.setItem("lastEpisode", `${episode}`);
       iframe.src = `https://vidsrc.net/embed/tv?imdb=${imdbID}&season=${season}&episode=${episode}&t=${timestamp}`;
     }
   } catch (err) {
@@ -36,7 +40,6 @@ async function start() {
   }
 }
 
-// Hide season/episode inputs when in Movie mode
 document.getElementById("modeToggle").addEventListener("change", function () {
   const tvControls = document.getElementById("tvControls");
   tvControls.style.display = this.checked ? "none" : "block";
@@ -44,43 +47,15 @@ document.getElementById("modeToggle").addEventListener("change", function () {
 
 const themeToggle = document.getElementById("themeToggle");
 
-// Apply saved theme on page load
-window.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "light") {
-    document.body.classList.add("light");
-    themeToggle.checked = true;
-  }
-});
-
-// Toggle and store theme
 themeToggle.addEventListener("change", () => {
   if (themeToggle.checked) {
     document.body.classList.add("light");
-    document.localStorage.setItem("theme", "light");
+    localStorage.setItem("theme", "light");
   } else {
     document.body.classList.remove("light");
     localStorage.setItem("theme", "dark");
   }
 });
-
-let nextPageToken = null;
-let currentQuery = "";
-let isLoading = false;
-
-
-
-const apiKeyInput = document.getElementById("userApiInput");
-
-// Load saved API key from localStorage on page load
-window.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "light") {
-    document.body.classList.add("light");
-    themeToggle.checked = true;
-  }
-});
-
 
 
 document.getElementById("showInput").addEventListener('keypress', function(event){
@@ -112,13 +87,13 @@ function applyFont(fontClass) {
   ];
 
   elements.forEach(el => {
-    el.classList.remove(...fontClasses); // remove all font classes
-    el.classList.add(fontClass);         // add the new one
+    el.classList.remove(...fontClasses);
+    el.classList.add(fontClass);
   });
 }
 
 document.getElementById("fontSelect").addEventListener("change", function () {
-  const select = this; // "this" is the <select>
+  const select = this;
 
   if (select.value === "0") {
     applyFont("segoeUIfont");
@@ -139,9 +114,11 @@ function quickFind() {
   if (quickFindToggleVariable === 0){
     document.getElementById("quickFindOptionsDiv").classList.remove("hidden");
     quickFindToggleVariable = 1;
+    localStorage.setItem("quickFindShown", "true");
   } else if (quickFindToggleVariable === 1){
     document.getElementById("quickFindOptionsDiv").classList.add("hidden");
     quickFindToggleVariable = 0;
+    localStorage.setItem("quickFindShown", "false");
   }
   
 }
@@ -151,10 +128,12 @@ document.getElementById("divchildshowtextparent").addEventListener("click", func
     document.getElementById("divchildshows").classList.remove("hidden");
     document.getElementById("divchildshowtextparent").innerHTML = "shows (click) ↓";
     quickFindDivChildShowTextParentToggleVariable = 1;
+    localStorage.setItem("showsShown", "true");
   } else if (quickFindDivChildShowTextParentToggleVariable === 1){
     document.getElementById("divchildshows").classList.add("hidden");
     document.getElementById("divchildshowtextparent").innerHTML = "shows (click) →";
     quickFindDivChildShowTextParentToggleVariable = 0;
+    localStorage.setItem("showsShown", "false");
   }
 });
 
@@ -163,12 +142,16 @@ document.getElementById("divchildmovietextparent").addEventListener("click", fun
     document.getElementById("divchildmovies").classList.remove("hidden");
     document.getElementById("divchildmovietextparent").innerHTML = "movies (click) ↓";
     quickFindDivChildMovieTextParentToggleVariable = 1;
+    localStorage.setItem("moviesShown", "true");
   } else if (quickFindDivChildMovieTextParentToggleVariable === 1){
     document.getElementById("divchildmovies").classList.add("hidden");
     document.getElementById("divchildmovietextparent").innerHTML = "movies (click) →";
     quickFindDivChildMovieTextParentToggleVariable = 0;
+    localStorage.setItem("moviesShown", "false");
   }
 });
+
+
 
 async function quickFindMediaShows(poster){
   const quickshowtimestamp = new Date().getTime();
@@ -187,6 +170,12 @@ async function quickFindMediaShows(poster){
   document.getElementById("modeToggle").checked = false;
   const tvControls = document.getElementById("tvControls");
   tvControls.style.display = document.getElementById("modeToggle").checked ? "none" : "block";
+  localStorage.setItem("lastTitle", `${poster}`);
+  localStorage.setItem("lastIsMovie", 'false');
+  localStorage.setItem("lastSeason", '1');
+  localStorage.setItem("lastEpisode", '1');
+  document.getElementById("seasonInput").classList.remove("hidden");
+  document.getElementById("episodeInput").classList.remove("hidden");
 }
 
 
@@ -203,9 +192,78 @@ async function quickFindMediaMovies(poster){
   document.getElementById("modeToggle").checked = true;
   const tvControls = document.getElementById("tvControls");
   tvControls.style.display = document.getElementById("modeToggle").checked ? "none" : "block";
+  localStorage.setItem("lastTitle", `${poster}`);
+  localStorage.setItem("lastIsMovie", 'true');
 }
 
-
-function adblockCheck() {
+function adblockCheck(){
   document.getElementById("adsWarning").classList.add("hidden");
 }
+
+function clearLocalStorage(){
+  let ans = confirm("are you sure you want to clear all cookies from this website");
+  if (ans){
+  localStorage.setItem("lastTitle", "");
+  localStorage.setItem("lastIsMovie", "");
+  localStorage.setItem("lastSeason", "");
+  localStorage.setItem("lastEpisode", "");
+  localStorage.setItem("theme", "");
+  localStorage.setItem("quickFindShown", "");
+  localStorage.setItem("showsShown", "");
+  localStorage.setItem("moviesShown", "");
+  window.location.reload(true);
+  } else {return}
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const lastTitleLocal = localStorage.getItem("lastTitle");
+  const lastIsMovieLocal = localStorage.getItem("lastIsMovie");
+  const lastSeasonLocal = localStorage.getItem("lastSeason");
+  const lastEpisodeLocal = localStorage.getItem("lastEpisode");
+
+  if (lastTitleLocal) {
+    document.getElementById("showInput").value = lastTitleLocal;
+  }
+
+  if (lastIsMovieLocal === "true") {
+    document.getElementById("modeToggle").checked = true;
+    document.getElementById("seasonInput").classList.add("hidden");
+    document.getElementById("episodeInput").classList.add("hidden");
+  } else if (lastIsMovieLocal === "false") {
+    document.getElementById("modeToggle").checked = false;
+    if (lastSeasonLocal) {
+      document.getElementById("seasonInput").value = lastSeasonLocal;
+    }
+    if (lastEpisodeLocal) {
+      document.getElementById("episodeInput").value = lastEpisodeLocal;
+    }
+  }
+
+  if (lastTitleLocal) {
+    start();
+  }
+
+  const savedTheme = localStorage.getItem("theme");
+  const showsSavedState = localStorage.getItem("showsShown");
+  const moviesSavedState = localStorage.getItem("moviesShown");
+  const quickFindSavedState = localStorage.getItem("quickFindShown");
+  if (savedTheme === "light") {
+    document.body.classList.add("light");
+    themeToggle.checked = true;
+  }
+  if (showsSavedState === "false") {
+    document.getElementById("divchildshows").classList.add("hidden");
+    document.getElementById("divchildshowtextparent").innerHTML = "shows (click) →";
+    quickFindDivChildShowTextParentToggleVariable = 0;
+  }
+  if (moviesSavedState === "false") {
+    document.getElementById("divchildmovies").classList.add("hidden");
+    document.getElementById("divchildmovietextparent").innerHTML = "movies (click) →";
+    quickFindDivChildMovieTextParentToggleVariable = 0;
+  }
+  if (quickFindSavedState === "false") {
+    document.getElementById("quickFindOptionsDiv").classList.add("hidden");
+    quickFindToggleVariable = 0;
+  }
+
+});
