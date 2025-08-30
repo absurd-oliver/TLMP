@@ -18,19 +18,19 @@
     </script>
     <script src="feedback.js" defer></script>
   </head>
-  <body class="segoeUIfont">
-    <div id="adsWarning">
-      <br>
-      <p>
-        ⚠️ For your safety, please enable an 
-        <a href="https://chromewebstore.google.com/detail/ddkjiahejlhfcafbddmgiahcphecmpfh?utm_source=item-share-cb">ad blocker</a> 
-        and 
-        <a href="https://chromewebstore.google.com/detail/aefkmifgmaafnojlojpnekbpbmjiiogg?utm_source=item-share-cb">popup blocker</a> 
-        before watching.
-      </p>
-      <button onclick="adblockCheck()">acknowledge</button>
-      <br>
-    </div>
+  <body class="unclickable">
+    <div id="adsWarning" class="clickable">
+    <br>
+    <p>
+      ⚠️ For your safety, please enable an 
+      <a href="https://chromewebstore.google.com/detail/ddkjiahejlhfcafbddmgiahcphecmpfh?utm_source=item-share-cb">ad blocker</a> 
+      and 
+      <a href="https://chromewebstore.google.com/detail/aefkmifgmaafnojlojpnekbpbmjiiogg?utm_source=item-share-cb">popup blocker</a> 
+      before watching.
+    </p>
+    <button onclick="adblockCheck()">acknowledge to use site</button>
+    <br>
+  </div>
     <input type="text" id="showInput" placeholder="Show or Movie name" class="segoeUIfont"/>
     <label><input type="checkbox" id="modeToggle"/>Movie Mode</label>
     <div id="tvControls">
@@ -52,9 +52,9 @@
       allowfullscreen
     ></iframe>
     <br>
-    <button id="clearLocalStorageButton" onclick="clearLocalStorage()">clear cookies</button>
+    <button id="clearLocalStorageButton" onclick="clearLocalStorage()" class="segoeUIfont">clear cookies</button>
     <br>
-    <button id="optionsButton" onclick="quickFind()">Quick Find</button>
+    <button id="optionsButton" onclick="quickFind()" class="segoeUIfont">Quick Find</button>
     <div id="quickFindOptionsDiv">
       <h2 id="divchildshowtextparent">shows (click) ↓</h2>
       <div id="divchildshows">
@@ -83,6 +83,7 @@
     </div>
     <br>
     <textarea id="feedback" placeholder='Type your feedback, quick add suggestions and more here (emails are checked frequently)'></textarea>
-    <button id="addToQuickFindButton" onclick="addToQuickFind()">send feedback</button>
+    <button id="sendFeedbackButton" onclick="addToQuickFind()">send feedback</button>
+    <button id="permaAcknowledgeButton" onclick="permaAcknowledge()"> permanently acknowledge adblocker warning </button>
   </body>
 </html>

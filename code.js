@@ -83,7 +83,12 @@ function applyFont(fontClass) {
     document.getElementById("seasonInput"),
     document.getElementById("episodeInput"),
     document.getElementById("fontSelect"),
-    document.getElementById("findButton")
+    document.getElementById("findButton"),
+    document.getElementById("clearLocalStorageButton"),
+    document.getElementById("optionsButton"),
+    document.getElementById("feedback"),
+    document.getElementById("sendFeedbackButton"),
+    document.getElementById("permaAcknowledgeButton")
   ];
 
   elements.forEach(el => {
@@ -97,10 +102,13 @@ document.getElementById("fontSelect").addEventListener("change", function () {
 
   if (select.value === "0") {
     applyFont("segoeUIfont");
+    localStorage.setItem("font", "segoeUIfont");
   } else if (select.value === "1") {
     applyFont("cursivefont");
+    localStorage.setItem("font", "cursivefont");
   } else if (select.value === "2") {
     applyFont("comicsansfont");
+    localStorage.setItem("font", "comicsansfont");
   } else {
     console.error("Unknown font option:", select.value);
   }
@@ -198,6 +206,23 @@ async function quickFindMediaMovies(poster){
 
 function adblockCheck(){
   document.getElementById("adsWarning").classList.add("hidden");
+  document.body.classList.replace("unclickable", "clickable");
+  let currentfont = localStorage.getItem("font");
+  applyFont(currentfont)
+  if (currentfont === "segoeUIfont"){
+    document.getElementById("fontSelect").value = 0;
+  } else if (currentfont === "cursivefont"){
+    document.getElementById("fontSelect").value = 1;
+  } else if (currentfont === "comicsansfont"){
+    document.getElementById("fontSelect").value = 2;
+  } else {document.getElementById("fontSelect").value = 0;}
+}
+
+function permaAcknowledge(){
+  let ans = confirm("do you want to permanently acknowledge the adblocker warning until you clear cookies ?");
+  if (ans){
+    localStorage.setItem("permaAknow", "true");
+  } else {return}
 }
 
 function clearLocalStorage(){
@@ -211,6 +236,8 @@ function clearLocalStorage(){
   localStorage.setItem("quickFindShown", "");
   localStorage.setItem("showsShown", "");
   localStorage.setItem("moviesShown", "");
+  localStorage.setItem("permaAknow", "false");
+  localStorage.setItem("font", "segoeUIfont");
   window.location.reload(true);
   } else {return}
 }
@@ -247,6 +274,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const showsSavedState = localStorage.getItem("showsShown");
   const moviesSavedState = localStorage.getItem("moviesShown");
   const quickFindSavedState = localStorage.getItem("quickFindShown");
+  const permaAknow = localStorage.getItem("permaAknow");
   if (savedTheme === "light") {
     document.body.classList.add("light");
     themeToggle.checked = true;
@@ -265,5 +293,7 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("quickFindOptionsDiv").classList.add("hidden");
     quickFindToggleVariable = 0;
   }
-
+  if (permaAknow === "true"){
+    adblockCheck()
+  }
 });
