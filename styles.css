@@ -7,6 +7,8 @@
   --button-bg: #4e8cff;
   --button-hover: #3a6edc;
   --iframe-shadow: rgba(0, 0, 0, 0.4);
+  --footer-color: #252538;
+  --footer-color-hover: #333350;
 }
 
 body.light {
@@ -18,6 +20,8 @@ body.light {
   --button-bg: #4e8cff;
   --button-hover: #3a6edc;
   --iframe-shadow: rgba(0, 0, 0, 0.1);
+  --footer-color: #dddddd;
+  --footer-color-hover: #ffffff;
 }
 
 body {
@@ -188,6 +192,24 @@ textarea {
 
 a {
   color: aqua;
+}
+
+footer {
+  background-color: var(--footer-color);
+  width: 90vw;
+  border: var(--footer-color);
+  border-radius: 5px;
+  text-align: center;
+  font-size: small;
+  transition: background-color 0.3s ease;
+}
+
+footer:hover {
+  background-color: var(--footer-color-hover);
+}
+
+.repoLink {
+  color:#4e8cff;
 }
 
 /* z-index: -1; */

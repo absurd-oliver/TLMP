@@ -225,6 +225,10 @@ function permaAcknowledge(){
   } else {return}
 }
 
+function footerClick(){
+  window.location.href = "https://github.com/absurd-oliver/Display_Show-Movie";
+}
+
 function clearLocalStorage(){
   let ans = confirm("are you sure you want to clear all cookies from this website");
   if (ans){
