@@ -11,6 +11,19 @@
   --footer-color-hover: #333350;
 }
 
+body.pink {
+  --bg-color: #FFC0CB;
+  --text-color: #1e1e2f;
+  --input-bg: #ffffff;
+  --input-text: #000000;
+  --placeholder-color: #666666;
+  --button-bg: #FF69B4;
+  --button-hover: #FF00FF;
+  --iframe-shadow: rgba(0, 0, 0, 0.1);
+  --footer-color: #ff8ec6;
+  --footer-color-hover: #ffbbdd;
+}
+
 body.light {
   --bg-color: #f0f0f0;
   --text-color: #1e1e2f;
@@ -173,6 +186,9 @@ img {
 
 h2 {
   background-color: var(--input-bg);
+  border: var(--input-bg);
+  border-radius: 5px;
+  width: auto;
 }
 
 #sendFeedbackButton {

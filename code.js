@@ -46,17 +46,36 @@ document.getElementById("modeToggle").addEventListener("change", function () {
 });
 
 const themeToggle = document.getElementById("themeToggle");
+const pinkThemeToggle = document.getElementById("themeTogglePink");
+
+var themeWas = '';
 
 themeToggle.addEventListener("change", () => {
   if (themeToggle.checked) {
+    pinkThemeToggle.checked = false;
     document.body.classList.add("light");
+    document.body.classList.remove("pink");
+    themeWas = localStorage.getItem("theme");
     localStorage.setItem("theme", "light");
   } else {
     document.body.classList.remove("light");
-    localStorage.setItem("theme", "dark");
+    localStorage.setItem("theme", themeWas);
   }
 });
 
+pinkThemeToggle.addEventListener("change", () => {
+  if (pinkThemeToggle.checked) {
+    themeToggle.checked = false;
+    document.body.classList.add("pink");
+    document.body.classList.remove("light");
+    discoTheme('stop')
+    themeWas = localStorage.getItem("theme");
+    localStorage.setItem("theme", "pink");
+  } else {
+    document.body.classList.remove("pink");
+    localStorage.setItem("theme", themeWas);
+  }
+});
 
 document.getElementById("showInput").addEventListener('keypress', function(event){
     if (event.key === 'Enter'){
@@ -219,6 +238,7 @@ function adblockCheck(){
 }
 
 function permaAcknowledge(){
+  if (localStorage.getItem("permaAknow") === "true") return;
   let ans = confirm("do you want to permanently acknowledge the adblocker warning until you clear cookies ?");
   if (ans){
     localStorage.setItem("permaAknow", "true");
@@ -282,6 +302,10 @@ window.addEventListener("DOMContentLoaded", () => {
   if (savedTheme === "light") {
     document.body.classList.add("light");
     themeToggle.checked = true;
+  }
+  if (savedTheme === "pink") {
+    document.body.classList.add("pink");
+    pinkThemeToggle.checked = true;
   }
   if (showsSavedState === "false") {
     document.getElementById("divchildshows").classList.add("hidden");
