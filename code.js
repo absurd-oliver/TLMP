@@ -226,7 +226,7 @@ function permaAcknowledge(){
 }
 
 function footerClick(){
-  window.location.href = "https://github.com/absurd-oliver/Display_Show-Movie";
+  window.location.href = "https://github.com/absurd-oliver/Display_Show-Movie/commits/main/";
 }
 
 function clearLocalStorage(){
