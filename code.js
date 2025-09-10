@@ -68,7 +68,6 @@ pinkThemeToggle.addEventListener("change", () => {
     themeToggle.checked = false;
     document.body.classList.add("pink");
     document.body.classList.remove("light");
-    discoTheme('stop')
     themeWas = localStorage.getItem("theme");
     localStorage.setItem("theme", "pink");
   } else {
@@ -325,3 +324,4 @@ window.addEventListener("DOMContentLoaded", () => {
     adblockCheck()
   }
 });
+
