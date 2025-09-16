@@ -265,6 +265,10 @@ function clearLocalStorage(){
   } else {return}
 }
 
+function redirect(){
+  window.location.href = "https://absurd-oliver.github.io/landingPageProject/";
+}
+
 window.addEventListener("DOMContentLoaded", () => {
   const lastTitleLocal = localStorage.getItem("lastTitle");
   const lastIsMovieLocal = localStorage.getItem("lastIsMovie");
