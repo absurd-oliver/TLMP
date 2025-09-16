@@ -266,7 +266,7 @@ function clearLocalStorage(){
 }
 
 function redirect(){
-  window.location.href = "https://absurd-oliver.github.io/landingPageProject/";
+  window.location.href = "https://absurd-oliver.github.io/landingPageProject/index.html";
 }
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -328,4 +328,5 @@ window.addEventListener("DOMContentLoaded", () => {
     adblockCheck()
   }
 });
+
 
