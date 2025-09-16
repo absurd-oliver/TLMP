@@ -245,7 +245,7 @@ function permaAcknowledge(){
 }
 
 function footerClick(){
-  window.location.href = "https://github.com/absurd-oliver/Display_Show-Movie/commits/main/";
+  window.location.href = "https://github.com/absurd-oliver/TLMP/commits/main/";
 }
 
 function clearLocalStorage(){
@@ -266,7 +266,7 @@ function clearLocalStorage(){
 }
 
 function redirect(){
-  window.location.href = "https://absurd-oliver.github.io/landingPageProject/index.html";
+  window.location.href = "https://absurd-oliver.github.io/landing/index.html";
 }
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -328,5 +328,6 @@ window.addEventListener("DOMContentLoaded", () => {
     adblockCheck()
   }
 });
+
 
 
