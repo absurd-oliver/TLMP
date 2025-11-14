@@ -155,7 +155,7 @@ document.getElementById("divchildshowtextparent").addEventListener("click", func
     document.getElementById("divchildshowtextparent").innerHTML = "shows (click) ↓";
     quickFindDivChildShowTextParentToggleVariable = 1;
     localStorage.setItem("showsShown", "true");
-  } else if (quickFindDivChildShowTextParentToggleVariable === 1){
+  } else {
     document.getElementById("divchildshows").classList.add("hidden");
     document.getElementById("divchildshowtextparent").innerHTML = "shows (click) →";
     quickFindDivChildShowTextParentToggleVariable = 0;
@@ -169,7 +169,7 @@ document.getElementById("divchildmovietextparent").addEventListener("click", fun
     document.getElementById("divchildmovietextparent").innerHTML = "movies (click) ↓";
     quickFindDivChildMovieTextParentToggleVariable = 1;
     localStorage.setItem("moviesShown", "true");
-  } else if (quickFindDivChildMovieTextParentToggleVariable === 1){
+  } else {
     document.getElementById("divchildmovies").classList.add("hidden");
     document.getElementById("divchildmovietextparent").innerHTML = "movies (click) →";
     quickFindDivChildMovieTextParentToggleVariable = 0;
