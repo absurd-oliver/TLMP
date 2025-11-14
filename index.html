@@ -20,17 +20,17 @@
     <script src="feedback.js" defer></script>
   </head>
   <body class="unclickable">
-    <button id="redirectButton" onclick="redirect()">go back to landing page</button>
+    <button id="redirectButton" onclick="redirect()" class="clickable">go back to landing page</button>
     <div id="adsWarning" class="clickable">
     <br>
-    <p>
+    <p class="clickable">
       ⚠️ For your safety, please enable an 
-      <a href="https://chromewebstore.google.com/detail/ddkjiahejlhfcafbddmgiahcphecmpfh?utm_source=item-share-cb">ad blocker</a> 
+      <a href="https://chromewebstore.google.com/detail/ddkjiahejlhfcafbddmgiahcphecmpfh?utm_source=item-share-cb" class="clickable">ad blocker</a> 
       and 
-      <a href="https://chromewebstore.google.com/detail/aefkmifgmaafnojlojpnekbpbmjiiogg?utm_source=item-share-cb">popup blocker</a> 
+      <a href="https://chromewebstore.google.com/detail/aefkmifgmaafnojlojpnekbpbmjiiogg?utm_source=item-share-cb" class="clickable">popup blocker</a> 
       before watching.
     </p>
-    <button onclick="adblockCheck()">acknowledge to use site</button>
+    <button onclick="adblockCheck()" class="clickable">acknowledge to use site (click)</button>
     <br>
   </div>
     <input type="text" id="showInput" placeholder="Show or Movie name" class="segoeUIfont"/>
@@ -57,39 +57,38 @@
       allowfullscreen
     ></iframe>
     <br>
-    <button id="clearLocalStorageButton" onclick="clearLocalStorage()" class="segoeUIfont">clear cookies</button>
-    <br>
     <button id="optionsButton" onclick="quickFind()" class="segoeUIfont">Quick Find</button>
     <div id="quickFindOptionsDiv">
       <h2 id="divchildshowtextparent">shows (click) ↓</h2>
       <div id="divchildshows">
-      <img id="familyguyposter" src="showImages/familyguyposter.jpg" onclick="quickFindMediaShows('family guy')">
-      <img id="uploadposter" src="showImages/uploadposter.webp" onclick="quickFindMediaShows('upload')">
-      <img id="therookieposter" src="showImages/therookieposter.jpg" onclick="quickFindMediaShows('the rookie')">
-      <img id="carmensandiegoposter" src="showImages/carmensandiegoposter.jpg" onclick="quickFindMediaShows('carmen sandiego')">
-      <img id="demonslayerposter" src="showImages/demonslayerposter.jpg" onclick="quickFindMediaShows('demon slayer')">
-      <img id="doctorwhoposter" src="showImages/doctorwhoposter.jpg" onclick="quickFindMediaShows('doctor who')">
-      <img id="kcUndercoveposter" src="showImages/kcUndercoverposter.jpg" onclick="quickFindMediaShows('kc undercover')">
-      <img id="doctorhouseposter" src="showImages/doctorhouseposter.jpg" onclick="quickFindMediaShows('house')"/>
+      <img id="familyguyposter" src="showImages/familyguyposter.jpg" onclick="quickFindMediaShows('family guy')" loading="lazy" alt="family guy poster" title="family guy poster">
+      <img id="uploadposter" src="showImages/uploadposter.webp" onclick="quickFindMediaShows('upload')"  loading="lazy" alt="upload poster" title="upload poster">
+      <img id="therookieposter" src="showImages/therookieposter.jpg" onclick="quickFindMediaShows('the rookie')"  loading="lazy" alt="the rookie poster" title="the rookie poster">
+      <img id="carmensandiegoposter" src="showImages/carmensandiegoposter.jpg" onclick="quickFindMediaShows('carmen sandiego')"  loading="lazy" alt="carmen sandiego poster" title="carmen sandiego poster">
+      <img id="demonslayerposter" src="showImages/demonslayerposter.jpg" onclick="quickFindMediaShows('demon slayer')"  loading="lazy" alt="demon slayer poster" title="demon slayer poster">
+      <img id="doctorwhoposter" src="showImages/doctorwhoposter.jpg" onclick="quickFindMediaShows('doctor who')"  loading="lazy" alt="doctor who poster" title="doctor who poster">
+      <img id="kcUndercoverposter" src="showImages/kcUndercoverposter.jpg" onclick="quickFindMediaShows('kc undercover')"  loading="lazy" alt="kc Undercover poster" title="kc Undercover poster">
+      <img id="doctorhouseposter" src="showImages/doctorhouseposter.jpg" onclick="quickFindMediaShows('house')"  loading="lazy" alt="doctor house poster" title="doctor house poster">
       </div>
       <h2 id="divchildmovietextparent">movies (click) ↓</h2>
       <div id="divchildmovies">
-        <img id="kpopdemonhuntersposterposter" src="movieimages/kpopdemonhuntersposter.webp" onclick="quickFindMediaMovies('kpop demon hunters')">
-        <img id="starwarsepisodeivanewhopeposter" src="movieimages/starwarsepisodeivanewhope.jpg" onclick="quickFindMediaMovies('Star Wars: Episode IV - A New Hope')">
-        <img id="kingsmanthesecretserviceposter" src="movieimages/kingsmanthesecretserviceposter.jpg" onclick="quickFindMediaMovies('kingsman: the secret service')">
-        <img id="kingsmanthegoldencircleposter" src="movieimages/kingsmanthegoldencircleposter.jpg" onclick="quickFindMediaMovies('kingsman: the golden circle')">
-        <img id="bladerunnerposter" src="movieimages/bladerunnerposter.jpg" onclick="quickFindMediaMovies('Blade Runner')">
-        <img id="bladerunner2049poster" src="movieimages/bladerunner2049poster.jpg" onclick="quickFindMediaMovies('Blade Runner 2049')">
-        <img id="howtotrainyourdragonposter" src="movieimages/howtotrainyourdragonposter.jpg" onclick="quickFindMediaMovies('how to train your dragon')">
-        <img id="howtotrainyourdragon2poster" src="movieimages/httyd2poster.jpeg" onclick="quickFindMediaMovies('how to train your dragon 2')">
-        <img id="HowtoTrainYourDragonTheHiddenWorldposter" src="movieimages/httyd3poster.jpg" onclick="quickFindMediaMovies('How to Train Your Dragon: The Hidden World')">
-        <img id="mickey17poster" src="movieimages/mickey17poster.jpg" onclick="quickFindMediaMovies('mickey 17')">
-        <img id="bringherbackposter" src="movieimages/bringherbackposter.jpeg" onclick="quickFindMediaMovies('bring her back')">
+        <img id="kpopdemonhuntersposterposter" src="movieimages/kpopdemonhuntersposter.webp" onclick="quickFindMediaMovies('kpop demon hunters')"  loading="lazy" alt="kpop demon hunters poster" title="kpop demon hunters poster">
+        <img id="starwarsepisodeivanewhopeposter" src="movieimages/starwarsepisodeivanewhope.jpg" onclick="quickFindMediaMovies('Star Wars: Episode IV - A New Hope')"  loading="lazy" alt="star wars episode iv a new hope poster" title="star wars episode iv a new hope poster">
+        <img id="kingsmanthesecretserviceposter" src="movieimages/kingsmanthesecretserviceposter.jpg" onclick="quickFindMediaMovies('kingsman: the secret service')"  loading="lazy" alt="kingsman the secret service poster" title="kingsman the secret service poster">
+        <img id="kingsmanthegoldencircleposter" src="movieimages/kingsmanthegoldencircleposter.jpg" onclick="quickFindMediaMovies('kingsman: the golden circle')"  loading="lazy" alt="kingsman the golden circle poster" title="kingsman the golden circle poster">
+        <img id="bladerunnerposter" src="movieimages/bladerunnerposter.jpg" onclick="quickFindMediaMovies('Blade Runner')"  loading="lazy" alt="bladerunner poster" title="bladerunner poster">
+        <img id="bladerunner2049poster" src="movieimages/bladerunner2049poster.jpg" onclick="quickFindMediaMovies('Blade Runner 2049')"  loading="lazy" alt="bladerunner 2049 poster" title="bladerunner 2049 poster">
+        <img id="howtotrainyourdragonposter" src="movieimages/howtotrainyourdragonposter.jpg" onclick="quickFindMediaMovies('how to train your dragon')"  loading="lazy" alt="how to train your dragon poster" title="how to train your dragon poster">
+        <img id="howtotrainyourdragon2poster" src="movieimages/httyd2poster.jpeg" onclick="quickFindMediaMovies('how to train your dragon 2')"  loading="lazy" alt="how to train your dragon 2 poster" title="how to train your dragon 2 poster">
+        <img id="HowtoTrainYourDragonTheHiddenWorldposter" src="movieimages/httyd3poster.jpg" onclick="quickFindMediaMovies('How to Train Your Dragon: The Hidden World')"  loading="lazy" alt="How to Train Your Dragon: The Hidden World poster" title="How to Train Your Dragon: The Hidden World poster">
+        <img id="mickey17poster" src="movieimages/mickey17poster.jpg" onclick="quickFindMediaMovies('mickey 17')"  loading="lazy" alt="mickey 17 poster" title="mickey 17 poster">
+        <img id="bringherbackposter" src="movieimages/bringherbackposter.jpeg" onclick="quickFindMediaMovies('bring her back')"  loading="lazy" alt="bring her back poster" title="bring her back poster">
       </div>
     </div>
     <br>
     <textarea id="feedback" placeholder='Type your feedback, quick add suggestions and more here (emails are checked frequently)'></textarea>
     <button id="sendFeedbackButton" onclick="addToQuickFind()">send feedback</button>
+    <button id="clearLocalStorageButton" onclick="clearLocalStorage()" class="segoeUIfont">clear cookies</button>
     <button id="permaAcknowledgeButton" onclick="permaAcknowledge()"> permanently acknowledge adblocker warning </button>
   </body>
   <footer id="pageFooter" onclick="footerClick()">
@@ -97,5 +96,4 @@
   </footer>
 
 </html>
-
 
