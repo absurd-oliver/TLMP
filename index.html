@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <title>Totally Legit Movie Player</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
     <link rel="stylesheet" href="styles.css" />
-    <script src="code.js" defer></script>
+    <script type="module" src="./js/init.js" defer></script>
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
@@ -20,8 +20,8 @@
     <script src="feedback.js" defer></script>
   </head>
   <body class="unclickable">
-    <button id="redirectButton" onclick="redirect()" class="clickable">go back to landing page</button>
-    <div id="adsWarning" class="clickable">
+    <button id="redirectButton" class="clickable">go back to landing page</button>
+    <div id="adsWarning" data-warning="usage" class="clickable">
     <br>
     <p class="clickable">
       ⚠️ For your safety, please enable an 
@@ -30,7 +30,7 @@
       <a href="https://chromewebstore.google.com/detail/aefkmifgmaafnojlojpnekbpbmjiiogg?utm_source=item-share-cb" class="clickable">popup blocker</a> 
       before watching.
     </p>
-    <button onclick="adblockCheck()" class="clickable">acknowledge to use site (click)</button>
+    <button class="clickable">acknowledge to use site (click)</button>
     <br>
   </div>
     <input type="text" id="showInput" placeholder="Show or Movie name" class="segoeUIfont"/>
@@ -88,12 +88,16 @@
     <br>
     <textarea id="feedback" placeholder='Type your feedback, quick add suggestions and more here (emails are checked frequently)'></textarea>
     <button id="sendFeedbackButton" onclick="addToQuickFind()">send feedback</button>
-    <button id="clearLocalStorageButton" onclick="clearLocalStorage()" class="segoeUIfont">clear cookies</button>
+    <button id="clearLocalStorageButton" class="segoeUIfont">clear cookies</button>
     <button id="permaAcknowledgeButton" onclick="permaAcknowledge()"> permanently acknowledge adblocker warning </button>
   </body>
-  <footer id="pageFooter" onclick="footerClick()">
-    <p id="footerText">website made by <a class="repoLink" href="https://github.com/absurd-oliver/">absurdoliver</a> and hosted on github in <a class="repoLink" href="https://github.com/absurd-oliver/Display_Show-Movie">this repository</a></p>
-  </footer>
-
+  <footer id="pageFooter">
+  <a href="https://github.com/absurd-oliver/TLMP/commits/main/" target="_blank" style="text-decoration: none; color: inherit;">
+    <p id="footerText">
+      website made by <a class="repoLink" href="https://github.com/absurd-oliver/" target="_blank">absurdoliver</a> 
+      and hosted on github in <a class="repoLink" href="https://github.com/absurd-oliver/Display_Show-Movie" target="_blank">this repository</a>
+    </p>
+  </a>
+</footer>
 </html>
 
