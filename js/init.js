@@ -1,5 +1,5 @@
 import { els } from "./dom.js";
-import { elems, episodeChange } from "./tvControls.js";
+import { elems, episodeChange } from "./tvcontrols.js";
 import { initThemes } from "./themes.js";
 import { initQuickFind } from "./quickfind.js";
 import { initFonts } from "./fonts.js";
