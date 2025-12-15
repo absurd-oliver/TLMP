@@ -16,34 +16,38 @@ export async function episodeChange(event) {
   const maxEpisodes = await episodesAmount(els.show.value, els.season.value);
 
   let episodeChanged = false;
+  let maxorminEpreached = false;
 
   if (clickedButtonId === 'prevButton') { 
     if (episodeInput.value > 1) {
       episodeInput.value = parseInt(episodeInput.value) - 1;
       episodeChanged = true;
-    } 
+    } else {
+      maxorminEpreached = true;
+    }
   } else if (clickedButtonId === 'nextButton') {
     if (episodeInput.value < maxEpisodes){
       episodeInput.value = parseInt(episodeInput.value) + 1;
       episodeChanged = true;
+    } else {
+      maxorminEpreached = true;
     }
   }
 
   if (episodeChanged) {
     setTimeout(() => {
       start();
-      currentTargetElement.disabled = false; 
+      if(!maxorminEpreached) currentTargetElement.disabled = false;
     }, 100);
-  } else {
+  } else if (maxorminEpreached) {
     currentTargetElement.disabled = false;
-    console.log(`Max episodes (${maxEpisodes}) reached or minimum reached.`);
   }
 }
 
 async function episodesAmount(title, season) {
     const apiKey = "d0004590";
     const apiRes = await fetch(
-        `www.omdbapi.com{apiKey}&t=${encodeURIComponent(title)}&Season=${season}`
+        `https://www.omdbapi.com/?apikey=${apiKey}&t=${encodeURIComponent(title)}&Season=${season}`
     );
     
     const data = await apiRes.json();
