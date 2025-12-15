@@ -243,8 +243,10 @@ footer:hover {
 
 #divchildmovietextparent{
   user-select: none;
+  width: 95vw;
 }
 
 #divchildshowtextparent{
   user-select: none;
+  width: 95vw;
 }
