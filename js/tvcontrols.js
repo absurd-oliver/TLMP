@@ -6,18 +6,18 @@ export const elems = {
     next: document.getElementById("nextButton")
 };
 
-export async function episodeChange(event) {
+export async function episodeChange(e) {
     const episodeInput = els.episode;
     const maxEpisodes = await episodesAmount(els.show.value, els.season.value);
 
     let episodeChanged = false;
 
-    if (event.currentTarget.id === 'prevButton') {
+    if (e.id === 'prevButton') {
         if (episodeInput.value > 1) {
             episodeInput.value = parseInt(episodeInput.value) - 1;
             episodeChanged = true;
         }
-    } else if (event.currentTarget.id === 'nextButton') {
+    } else if (e.id === 'nextButton') {
         if (episodeInput.value < maxEpisodes){
             episodeInput.value = parseInt(episodeInput.value) + 1;
             episodeChanged = true;
