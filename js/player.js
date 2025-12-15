@@ -39,7 +39,7 @@ export async function start() {
       els.iframe.src =
         `https://vidsrc.net/embed/tv?imdb=${imdbID}` +
         `&season=${season}&episode=${episode}&t=${timestamp}`;
-      document.title = `${title}S${season}E${episode} on TLMP`;
+      document.title = `${title}S${season.padStart(2, '0')}E${episode.padStart(2, '0')} on TLMP`;
     }
   } catch (err) {
     alert("Title not found");
