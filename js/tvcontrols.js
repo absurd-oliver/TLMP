@@ -6,29 +6,31 @@ export const getTvControlsElems = () => ({
   next: document.getElementById("nextButton")
 });
 
-export async function episodeChange(e) {
-    const episodeInput = els.episode;
-    const maxEpisodes = await episodesAmount(els.show.value, els.season.value);
+export async function episodeChange(event) {
+  const clickedButtonId = event.currentTarget.id; 
 
-    let episodeChanged = false;
+  const episodeInput = els.episode;
+  const maxEpisodes = await episodesAmount(els.show.value, els.season.value);
 
-    if (e.currentTarget.id === 'prevButton') {
-        if (episodeInput.value > 1) {
-            episodeInput.value = parseInt(episodeInput.value) - 1;
-            episodeChanged = true;
-        }
-    } else if (e.currentTarget.id === 'nextButton') {
-        if (episodeInput.value < maxEpisodes){
-            episodeInput.value = parseInt(episodeInput.value) + 1;
-            episodeChanged = true;
-        }
+  let episodeChanged = false;
+
+  if (clickedButtonId === 'prevButton') { 
+    if (episodeInput.value > 1) {
+      episodeInput.value = parseInt(episodeInput.value) - 1;
+      episodeChanged = true;
     }
-
-    if (episodeChanged) {
-        setTimeout(() => {
-            start();
-        }, 100); 
+  } else if (clickedButtonId === 'nextButton') {
+    if (episodeInput.value < maxEpisodes){
+      episodeInput.value = parseInt(episodeInput.value) + 1;
+      episodeChanged = true;
     }
+  }
+
+  if (episodeChanged) {
+    setTimeout(() => {
+      start();
+    }, 0);
+  }
 }
 
 async function episodesAmount(title, season) {
