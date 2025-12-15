@@ -1,4 +1,5 @@
 import { els } from "./dom.js";
+import { elems, episodeChange } from "./tvControls.js";
 import { initThemes } from "./themes.js";
 import { initQuickFind } from "./quickfind.js";
 import { initFonts } from "./fonts.js";
@@ -24,6 +25,10 @@ document.addEventListener("keydown", (e) => {
 els.mode.addEventListener("change", () => {
   els.tvControls.style.display = els.mode.checked ? "none" : "block";
 });
+
+/* Next / Previous Buttons */
+elems.prev.addEventListener("click", episodeChange);
+elems.next.addEventListener("click", episodeChange);
 
 /* Init */
 window.addEventListener("DOMContentLoaded", () => {
