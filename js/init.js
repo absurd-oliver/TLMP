@@ -1,5 +1,7 @@
+// init.js
+
 import { els } from "./dom.js";
-import { getTvControlsElems, episodeChange, updateButtonStates } from "./tvcontrols.js";
+import { getTvControlsElems, episodeChange, fetchAndApplyButtonStates } from "./tvcontrols.js";
 import { initThemes } from "./themes.js";
 import { initQuickFind } from "./quickfind.js";
 import { initFonts } from "./fonts.js";
@@ -10,6 +12,7 @@ import {
   acknowledgeAdsWarning,
   permanentlyAcknowledgeAdsWarning
 } from "./handleadswarning.js";
+
 
 /* Enter key handling */
 document.addEventListener("keydown", (e) => {
@@ -26,6 +29,7 @@ els.mode.addEventListener("change", () => {
   els.tvControls.style.display = els.mode.checked ? "none" : "block";
 });
 
+
 /* Init */
 window.addEventListener("DOMContentLoaded", () => {
   initThemes();
@@ -33,18 +37,26 @@ window.addEventListener("DOMContentLoaded", () => {
   initFonts();
   restoreState();
 
-  /* Next / Previous Buttons */
   const elems = getTvControlsElems(); 
   
   if (elems.prev && elems.next) {
-      elems.prev.addEventListener("click", episodeChange);
-      elems.next.addEventListener("click", episodeChange);
+    /* Next / Previous Buttons Click Handlers */
+    elems.prev.addEventListener("click", episodeChange);
+    elems.next.addEventListener("click", episodeChange);
+
+    /* Input Change Handlers */
+    els.show.addEventListener("input", fetchAndApplyButtonStates);
+    els.season.addEventListener("input", fetchAndApplyButtonStates);
+    els.episode.addEventListener("input", fetchAndApplyButtonStates);
+      
+    fetchAndApplyButtonStates(); 
   } else {
-      console.error("Previous or Next buttons not found in HTML!");
+    console.error("Previous or Next buttons not found in HTML.");
   }
 });
 
-/* expose for inline HTML handlers */
+
+/* expose for inline HTML handlers*/
 window.start = start;
 window.quickFind = toggleQuickFind;
 
@@ -67,9 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const redirectBtn = document.getElementById("redirectButton");
   if (redirectBtn) {
     redirectBtn.addEventListener("click", () => {
-      window.location.href = "https://absurd-oliver.github.io/landing/";
+      window.location.href = "absurd-oliver.github.io";
     });
   }
 });
-
-
