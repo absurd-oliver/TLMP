@@ -1,3 +1,5 @@
+// tvcontrols.js
+
 import { els } from "./dom.js";
 import { start } from "./player.js";
 
@@ -18,14 +20,6 @@ export function updateButtonStates(maxEpisodes) {
   elems.next.disabled = (currentEpisode >= maxEpisodes);
 }
 
-async function fetchAndApplyButtonStates() {
-  const title = els.show.value;
-  const season = els.season.value;
-  if (title && season) {
-    const maxEpisodes = await episodesAmount(title, season);
-    updateButtonStates(maxEpisodes);
-  }
-}
 
 export async function episodeChange(event) {
   const currentTargetElement = event.currentTarget;
@@ -34,6 +28,7 @@ export async function episodeChange(event) {
   currentTargetElement.disabled = true;
 
   const episodeInput = els.episode;
+  // Await the max episodes
   const maxEpisodes = await episodesAmount(els.show.value, els.season.value);
 
   let episodeChanged = false;
