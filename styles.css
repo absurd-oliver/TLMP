@@ -132,6 +132,17 @@ button {
   transition: background-color 0.3s ease;
 }
 
+button:disabled {
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #595959;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 button:hover {
   background-color: var(--button-hover);
 }
