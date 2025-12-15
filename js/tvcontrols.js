@@ -12,11 +12,10 @@ export function episodeChange(event) {
     if (event.currentTarget.id === 'prevButton') {
         if (episodeInput.value > 1) {
                 episodeInput.value = parseInt(episodeInput.value) - 1;
-            }
+        }
+        start();
     } else if (event.currentTarget.id === 'nextButton') {
         episodeInput.value = parseInt(episodeInput.value) + 1;
+        start();
     }
-
-    start()
-    
 }
