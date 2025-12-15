@@ -8,27 +8,34 @@ export const getTvControlsElems = () => ({
 
 export async function episodeChange(event) {
   const clickedButtonId = event.currentTarget.id; 
+  event.currentTarget.disabled = true;
 
   const episodeInput = els.episode;
   const maxEpisodes = await episodesAmount(els.show.value, els.season.value);
 
   let episodeChanged = false;
+  let maxepreached = false;
 
   if (clickedButtonId === 'prevButton') { 
     if (episodeInput.value > 1) {
       episodeInput.value = parseInt(episodeInput.value) - 1;
       episodeChanged = true;
+    } else {
+      maxepreached = true;
     }
   } else if (clickedButtonId === 'nextButton') {
     if (episodeInput.value < maxEpisodes){
       episodeInput.value = parseInt(episodeInput.value) + 1;
       episodeChanged = true;
+    } else {
+      maxepreached = true;
     }
   }
 
   if (episodeChanged) {
     setTimeout(() => {
       start();
+      if(!maxepreached) event.currentTarget.disabled = false;
     }, 100);
   }
 }
