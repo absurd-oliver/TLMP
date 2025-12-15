@@ -1,4 +1,5 @@
 import { els } from "./dom.js";
+import { start } from "./player.js";
 
 export const elems = {
     prev: document.getElementById("prevButton"),
@@ -10,9 +11,12 @@ export function episodeChange(event) {
 
     if (event.currentTarget.id === 'prevButton') {
         if (episodeInput.value > 1) {
-            episodeInput.value = parseInt(episodeInput.value) - 1;
-        }
+                episodeInput.value = parseInt(episodeInput.value) - 1;
+            }
     } else if (event.currentTarget.id === 'nextButton') {
         episodeInput.value = parseInt(episodeInput.value) + 1;
     }
+
+    start()
+    
 }
