@@ -27,7 +27,7 @@ export async function episodeChange(e) {
     if (episodeChanged) {
         setTimeout(() => {
             start();
-        }, 0); 
+        }, 100); 
     }
 }
 
