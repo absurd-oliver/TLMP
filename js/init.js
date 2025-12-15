@@ -1,5 +1,5 @@
 import { els } from "./dom.js";
-import { elems, episodeChange } from "./tvcontrols.js";
+import { getTvControlsElems, episodeChange } from "./tvcontrols.js";
 import { initThemes } from "./themes.js";
 import { initQuickFind } from "./quickfind.js";
 import { initFonts } from "./fonts.js";
@@ -34,8 +34,14 @@ window.addEventListener("DOMContentLoaded", () => {
   restoreState();
 
   /* Next / Previous Buttons */
-  elems.prev.addEventListener("click", episodeChange);
-  elems.next.addEventListener("click", episodeChange);
+  const elems = getTvControlsElems(); 
+  
+  if (elems.prev && elems.next) {
+      elems.prev.addEventListener("click", episodeChange);
+      elems.next.addEventListener("click", episodeChange);
+  } else {
+      console.error("Previous or Next buttons not found in HTML!");
+  }
 });
 
 /* expose for inline HTML handlers */

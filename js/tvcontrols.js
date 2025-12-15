@@ -1,10 +1,10 @@
 import { els } from "./dom.js";
 import { start } from "./player.js";
 
-export const elems = {
-    prev: document.getElementById("prevButton"),
-    next: document.getElementById("nextButton")
-};
+export const getTvControlsElems = () => ({
+  prev: document.getElementById("prevButton"),
+  next: document.getElementById("nextButton")
+});
 
 export async function episodeChange(e) {
     const episodeInput = els.episode;
