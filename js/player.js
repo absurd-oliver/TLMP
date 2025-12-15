@@ -28,7 +28,7 @@ export async function start() {
 
     if (isMovie) {
       els.iframe.src = `https://vidsrc.net/embed/movie?imdb=${imdbID}&t=${timestamp}`;
-      document.getElementById('titleElem').textContent = `${title} on TLMP`;
+      document.title = `${title} on TLMP`;
     } else {
       const season = els.season.value || 1;
       const episode = els.episode.value || 1;
@@ -39,7 +39,7 @@ export async function start() {
       els.iframe.src =
         `https://vidsrc.net/embed/tv?imdb=${imdbID}` +
         `&season=${season}&episode=${episode}&t=${timestamp}`;
-      document.getElementById('titleElem').textContent = `${title}S${season}E${episode} on TLMP`;
+      document.title = `${title}S${season}E${episode} on TLMP`;
     }
   } catch (err) {
     alert("Title not found");
