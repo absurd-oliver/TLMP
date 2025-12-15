@@ -12,12 +12,12 @@ export async function episodeChange(e) {
 
     let episodeChanged = false;
 
-    if (e.id === 'prevButton') {
+    if (e.currentTarget.id === 'prevButton') {
         if (episodeInput.value > 1) {
             episodeInput.value = parseInt(episodeInput.value) - 1;
             episodeChanged = true;
         }
-    } else if (e.id === 'nextButton') {
+    } else if (e.currentTarget.id === 'nextButton') {
         if (episodeInput.value < maxEpisodes){
             episodeInput.value = parseInt(episodeInput.value) + 1;
             episodeChanged = true;
