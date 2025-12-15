@@ -25,7 +25,7 @@ export async function start() {
 
   try {
     const imdbID = await fetchImdbID(title, isMovie);
-
+    document.title = "";
     if (isMovie) {
       els.iframe.src = `https://vidsrc.net/embed/movie?imdb=${imdbID}&t=${timestamp}`;
       document.title = `${title} on TLMP`;
