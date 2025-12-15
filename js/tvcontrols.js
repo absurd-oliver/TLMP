@@ -29,7 +29,7 @@ export async function episodeChange(event) {
   if (episodeChanged) {
     setTimeout(() => {
       start();
-    }, 0);
+    }, 100);
   }
 }
 
