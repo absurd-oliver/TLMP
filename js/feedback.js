@@ -29,3 +29,4 @@ function addToQuickFind() {
             document.getElementById("sendFeedbackButton").classList.remove('hidden');
         });
 }
+
