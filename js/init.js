@@ -24,6 +24,7 @@ document.addEventListener("keydown", (e) => {
 /* Mode toggle */
 els.mode.addEventListener("change", () => {
   els.tvControls.style.display = els.mode.checked ? "none" : "block";
+  els.prevnextbuttons.style.display = els.mode.checked ? "none" : "block";
 });
 
 /* Init */

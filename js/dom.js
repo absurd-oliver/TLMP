@@ -7,6 +7,7 @@ export const els = {
   iframe: $("showDisplay"),
   mode: $("modeToggle"),
   tvControls: $("tvControls"),
+  prevnextbuttons: $("prevNextButtons"),
 
   themeLight: $("themeToggle"),
   themePink: $("themeTogglePink"),
