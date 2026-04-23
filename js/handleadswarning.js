@@ -2,9 +2,11 @@ import { applyFont } from "./fonts.js";
 
 export function acknowledgeAdsWarning() {
   const warning = document.getElementById("adsWarning");
+  const overlay = document.getElementById("dimOverlay");
   if (!warning) return;
 
   warning.classList.add("hidden");
+  if (overlay) overlay.classList.add("hidden");
   document.body.classList.remove("unclickable");
   document.body.classList.add("clickable");
 
@@ -27,3 +29,5 @@ export function permanentlyAcknowledgeAdsWarning() {
     acknowledgeAdsWarning();
   }
 }
+
+

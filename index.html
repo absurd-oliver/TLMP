@@ -21,6 +21,7 @@
   </head>
   <body class="unclickable">
     <button id="redirectButton" class="clickable">go back to landing page</button>
+    <div id="dimOverlay"></div>
     <div id="adsWarning" data-warning="usage" class="clickable">
     <br>
     <p class="clickable">
@@ -41,8 +42,8 @@
       <input type="number" id="episodeInput"  min="1" placeholder="Episode" class="segoeUIfont"/>
     </div>
     <div id="prevNextButtons">
-      <button id='prevButton'>previous episode</button>
-      <button id='nextButton'>next episode</button>
+      <button id="prevButton">previous episode</button>
+      <button id="nextButton">next episode</button>
       </div>
     <button id="findButton" onclick="start()" class="segoeUIfont">Find</button>
     <iframe
@@ -92,7 +93,7 @@
       </div>
     </div>
     <br>
-    <textarea id="feedback" placeholder='Type your feedback, quick add suggestions and more here (emails are checked frequently)'></textarea>
+    <textarea id="feedback" placeholder="Type your feedback, quick add suggestions and more here (emails are checked frequently)"></textarea>
     <button id="sendFeedbackButton" onclick="addToQuickFind()">send feedback</button>
     <button id="clearLocalStorageButton" class="segoeUIfont">clear cookies</button>
     <button id="permaAcknowledgeButton"> permanently acknowledge adblocker warning </button>
