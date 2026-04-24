@@ -14,6 +14,10 @@ export function restoreState() {
   els.season.value = localStorage.getItem("lastSeason") || "";
   els.episode.value = localStorage.getItem("lastEpisode") || "";
 
+  if (localStorage.getItem("showsShown") === "false") els.shows.classList.add("hidden");
+  if (localStorage.getItem("moviesShown") === "false") els.movies.classList.add("hidden");
+  if (localStorage.getItem("quickFindShown") === "false") els.quickFind.classList.add("hidden");
+
   const theme = localStorage.getItem("theme");
   applyTheme(theme);
 
@@ -41,7 +45,9 @@ export function clearStorage() {
         'lastTitle',
         'permaAknow',
         'theme',
-        'quickFindShown'
+        'quickFindShown',
+        'showsShown',
+        'moviesShown'
     ];
     for (const item of localItems) {
         localStorage.removeItem(item);
