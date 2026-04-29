@@ -27,7 +27,7 @@ export async function start() {
     const imdbID = await fetchImdbID(title, isMovie);
     document.title = "";
     if (isMovie) {
-      els.iframe.src = `https://vidsrc.net/embed/movie?imdb=${imdbID}&t=${timestamp}`;
+      els.iframe.src = `https://vsembed.ru/embed/movie?imdb=${imdbID}&t=${timestamp}`;
       document.title = `${title} on TLMP`;
     } else {
       const season = els.season.value || 1;
@@ -37,7 +37,7 @@ export async function start() {
       localStorage.setItem("lastEpisode", episode);
 
       els.iframe.src =
-        `https://vidsrc.net/embed/tv?imdb=${imdbID}` +
+        `https://vsembed.ru/embed/tv?imdb=${imdbID}` +
         `&season=${season}&episode=${episode}&t=${timestamp}`;
       document.title = `${title}-S${season.padStart(2, '0')}E${episode.padStart(2, '0')} on TLMP`;
     }
@@ -61,8 +61,8 @@ export async function quickFindMedia(title, isMovie) {
   }
 
   els.iframe.src = isMovie
-    ? `https://vidsrc.net/embed/movie?imdb=${imdbID}&t=${t}`
-    : `https://vidsrc.net/embed/tv?imdb=${imdbID}&season=1&episode=1&t=${t}`;
+    ? `https://vsembed.ru/embed/movie?imdb=${imdbID}&t=${t}`
+    : `https://vsembed.ru/embed/tv?imdb=${imdbID}&season=1&episode=1&t=${t}`;
 
   localStorage.setItem("lastTitle", title);
   localStorage.setItem("lastIsMovie", String(isMovie));
