@@ -16,7 +16,6 @@ export const els = {
   shows: $("divchildshows"),
   movies: $("divchildmovies"),
   showsBtn: $("divchildshowtextparent"),
-  moviesBtn: $("divchildmovietextparent"),
 
   fontSelect: $("fontSelect"),
 };

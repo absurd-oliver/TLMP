@@ -15,7 +15,6 @@ export function restoreState() {
   els.episode.value = localStorage.getItem("lastEpisode") || "";
 
   if (localStorage.getItem("showsShown") === "false") els.shows.classList.add("hidden");
-  if (localStorage.getItem("moviesShown") === "false") els.movies.classList.add("hidden");
   if (localStorage.getItem("quickFindShown") === "false") els.quickFind.classList.add("hidden");
 
   const theme = localStorage.getItem("theme");
@@ -46,8 +45,7 @@ export function clearStorage() {
         'permaAknow',
         'theme',
         'quickFindShown',
-        'showsShown',
-        'moviesShown'
+        'showsShown'
     ];
     for (const item of localItems) {
         localStorage.removeItem(item);

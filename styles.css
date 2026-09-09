@@ -297,7 +297,6 @@ h2 {
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--text-muted);
-  text-transform: uppercase;
   cursor: pointer;
   user-select: none;
   transition: background-color 0.2s, color 0.2s;
@@ -373,7 +372,6 @@ footer:hover {
 
 #redirectButton:hover { background-color: #228a41; }
 
-#divchildmovietextparent,
 #divchildshowtextparent {
   user-select: none;
   width: 95vw;
