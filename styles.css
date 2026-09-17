@@ -72,7 +72,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.hidden { display: none; }
+.hidden { display: none; transition: transform 0.5s ease, opacity 0.5s ease;}
 
 .clickable { pointer-events: all; }
 

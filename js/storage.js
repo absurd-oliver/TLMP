@@ -3,6 +3,7 @@ import { applyTheme } from "./themes.js";
 import { applyFont, fontClasses } from "./fonts.js";
 import { start } from "./player.js";
 import { acknowledgeAdsWarning } from "./handleadswarning.js";
+import { toggleQuickFind } from "./quickfind.js"
 
 export function restoreState() {
   els.show.value = localStorage.getItem("lastTitle") || "";
@@ -14,7 +15,7 @@ export function restoreState() {
   els.season.value = localStorage.getItem("lastSeason") || "";
   els.episode.value = localStorage.getItem("lastEpisode") || "";
 
-  if (localStorage.getItem("showsShown") === "false") els.shows.classList.add("hidden");
+  if (localStorage.getItem("showsShown") === "false") els.shows.classList.add("hidden"); else els.showsBtn.textContent = 'Suggestions: ↓';
   if (localStorage.getItem("quickFindShown") === "false") els.quickFind.classList.add("hidden");
 
   const theme = localStorage.getItem("theme");
