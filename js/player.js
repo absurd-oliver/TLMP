@@ -48,6 +48,11 @@ export async function start() {
 }
 
 export async function quickFindMedia(title, isMovie) {
+  if (title === 'editshii') {
+    document.getElementById(“showDisplay”).src =
+        `https://vsembed.ru/embed/tv?imdb=tt35538033`;
+        return
+    }
   const imdbID = await fetchImdbID(title, isMovie);
   const t = Date.now();
 
